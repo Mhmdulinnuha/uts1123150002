@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "674244004136",
+    "project_id": "backend-golang-46fd8",
+    "storage_bucket": "backend-golang-46fd8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674244004136:android:728fcb29ab02e88dfe681d",
+        "android_client_info": {
+          "package_name": "com.example.latihanuts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRu15owhGYb56gCEhKGkb84lpjq3P_5j4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:674244004136:android:9c6977b72d05462ffe681d",
+        "android_client_info": {
+          "package_name": "com.example.uts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDRu15owhGYb56gCEhKGkb84lpjq3P_5j4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

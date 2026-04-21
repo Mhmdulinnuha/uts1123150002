@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import '../../features/auth/presentation/pages/login_pages.dart';
 import '../../features/auth/presentation/pages/register_pages.dart';
-import '../../features/auth/presentation/pages/verify_email_page.dart';
+import '../../features/auth/presentation/pages/verify_email_pages.dart';
 import '../../features/dashboard/presentation/pages/dashboard_page.dart';
 import '../../features/auth/presentation/pages/auth_guard_page.dart';
-import '../../features/auth/presentation/pages/splash_page.dart';
+import '../../features/auth/presentation/pages/spalash_pages.dart';
 class AppRouter {
   static const String splash      = '/';
   static const String login       = '/login';
