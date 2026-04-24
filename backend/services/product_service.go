@@ -1,7 +1,7 @@
 package services
 import (
-"github.com/Mhmdulinnuha/uts1123150002/backend/models"
-"github.com/Mhmdulinnuha/uts1123150002/backend/repositories"
+"github.com/Mhmdulinnuha/uts1123150002/models"
+"github.com/Mhmdulinnuha/uts1123150002/repositories"
 )
 type ProductService struct {
 productRepo *repositories.ProductRepository

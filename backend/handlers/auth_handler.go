@@ -3,7 +3,7 @@ import (
 "net/http"
 "time"
 "github.com/gin-gonic/gin"
-"github.com/Mhmdulinnuha/uts1123150002/backend/services"
+"github.com/Mhmdulinnuha/uts1123150002/services"
 )
 type AuthHandler struct {
 authService *services.AuthService

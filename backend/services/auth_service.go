@@ -6,9 +6,9 @@ import (
 "strconv"
 "time"
 "github.com/golang-jwt/jwt/v5"
-"github.com/Mhmdulinnuha/uts1123150002/backend/config"
-"github.com/Mhmdulinnuha/uts1123150002/backend/models"
-"github.com/Mhmdulinnuha/uts1123150002/backend/repositories"
+"github.com/Mhmdulinnuha/uts1123150002/config"
+"github.com/Mhmdulinnuha/uts1123150002/models"
+"github.com/Mhmdulinnuha/uts1123150002/repositories"
 "gorm.io/gorm"
 )
 type AuthService struct {

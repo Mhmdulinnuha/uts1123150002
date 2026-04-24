@@ -3,7 +3,7 @@ import (
 "fmt"
 "log"
 "os"
-"github.com/Mhmdulinnuha/uts1123150002/backend/models"
+"github.com/Mhmdulinnuha/uts1123150002/models"
 "gorm.io/driver/mysql"
 "gorm.io/gorm"
 "gorm.io/gorm/logger"

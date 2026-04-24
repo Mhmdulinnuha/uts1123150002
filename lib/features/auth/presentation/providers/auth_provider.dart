@@ -42,25 +42,37 @@ class AuthProvider extends ChangeNotifier {
 Future<bool> register({
   required String name,
   required String email,
-  required String password}) 
-  async {
-  _setLoading(); 
- 
-  
-  final credential = await _auth.createUserWithEmailAndPassword(
-    email: email, password: password,
-  );
-  _firebaseUser = credential.user;
- 
-  await _firebaseUser?.updateDisplayName(name); 
-  await _firebaseUser?.sendEmailVerification();
-   
-  _tempEmail = email;
-  _tempPassword = password;
- 
-  _status = AuthStatus.emailNotVerified;
-  notifyListeners();
-  return true;
+  required String password,
+}) async {
+  _setLoading();
+
+  try {
+    final credential = await _auth.createUserWithEmailAndPassword(
+      email: email,
+      password: password,
+    );
+
+    _firebaseUser = credential.user;
+
+    await _firebaseUser?.updateDisplayName(name);
+    await _firebaseUser?.sendEmailVerification();
+
+    _tempEmail = email;
+    _tempPassword = password;
+
+    _status = AuthStatus.emailNotVerified;
+    notifyListeners();
+
+    return true;
+  } on FirebaseAuthException catch (e) {
+    _setError(_mapFirebaseError(e.code));
+    return false;
+  } catch (e, stack) {
+  print("ERROR REGISTER: $e");
+  print("STACKTRACE: $stack");
+  _setError('Terjadi kesalahan: $e');
+  return false;
+}
 }
 
 Future<bool> loginAfterEmailVerification() async {
@@ -88,23 +100,40 @@ Future<bool> loginAfterEmailVerification() async {
 }
 
 Future<bool> _verifyTokenToBackend() async {
-  final firebaseToken = await _firebaseUser?.getIdToken();
+  try {
+    
+    final firebaseToken = await _firebaseUser?.getIdToken(true);
 
-  final response = await DioClient.instance.post(
-    ApiConstants.verifyToken,
-    data: {'firebase_token': firebaseToken},
-  );
+    print("FIREBASE TOKEN: $firebaseToken");
 
-  final data = response.data['data'] as Map<String, dynamic>;
+    if (firebaseToken == null) {
+      print("TOKEN NULL");
+      return false;
+    }
 
-  _backendToken = data['access_token'] as String;
+    final response = await DioClient.instance.post(
+      ApiConstants.verifyToken,
+      data: {'firebase_token': firebaseToken},
+    );
 
-  await SecureStorageService.saveToken(_backendToken!);
+    print("RESPONSE BACKEND: ${response.data}");
 
-  _status = AuthStatus.authenticated;
-  notifyListeners();
+    final data = response.data['data'] as Map<String, dynamic>;
 
-  return true;
+    _backendToken = data['access_token'] as String;
+
+    await SecureStorageService.saveToken(_backendToken!);
+
+    _status = AuthStatus.authenticated;
+    notifyListeners();
+
+    return true;
+
+  } catch (e) {
+    print("ERROR VERIFY TOKEN: $e");
+    _setError("Gagal verifikasi ke server"); 
+    return false;
+  }
 }
 
 // ─── Login dengan Email & Password ───────────────────────

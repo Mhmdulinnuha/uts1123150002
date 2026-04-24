@@ -3,8 +3,8 @@ import (
 "net/http"
 "strconv"
 "github.com/gin-gonic/gin"
-"github.com/Mhmdulinnuha/uts1123150002/backend/models"
-"github.com/Mhmdulinnuha/uts1123150002/backend/services"
+"github.com/Mhmdulinnuha/uts1123150002/models"
+"github.com/Mhmdulinnuha/uts1123150002/services"
 )
 type ProductHandler struct {
 productService *services.ProductService

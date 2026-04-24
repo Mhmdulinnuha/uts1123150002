@@ -12,6 +12,10 @@ var FirebaseAuth *auth.Client
 func InitFirebase() {
 credPath := os.Getenv("FIREBASE_CREDENTIALS_PATH")
 
+if credPath == "" {
+		credPath = "firebase/backend-golang-46fd8-firebase-adminsdk-fbsvc-46a077be09.json"
+	}
+
 opt := option.WithCredentialsFile(credPath)
 app, err := firebase.NewApp(context.Background(), nil, opt)
 if err != nil {

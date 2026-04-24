@@ -1,8 +1,8 @@
 package routes
 import (
 "github.com/gin-gonic/gin"
-"github.com/Mhmdulinnuha/uts1123150002/backend/handlers"
-"github.com/Mhmdulinnuha/uts1123150002/backend/middleware"
+"github.com/Mhmdulinnuha/uts1123150002/handlers"
+"github.com/Mhmdulinnuha/uts1123150002/middleware"
 )
 func SetupRouter() *gin.Engine {
 r := gin.Default()
@@ -25,7 +25,7 @@ v1 := r.Group("/v1")
 
 v1.GET("/health", func(c *gin.Context) {
 c.JSON(200, gin.H{"status": "ok", "service":
-"gin-firebase-backend"})
+"appstorerept"})
 })
 
 auth := v1.Group("/auth")

@@ -11,13 +11,13 @@
 .svn/
 .swiftpm/
 migrate_working_dir/
-
+backend/backend-golang-46fd8-firebase-adminsdk-fbsvc-46a077be09.json
 # IntelliJ related
 *.iml
 *.ipr
 *.iws
 .idea/
-
+backend/.env
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
 # is commented out by default.

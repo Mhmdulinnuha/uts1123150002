@@ -3,8 +3,8 @@ import (
 "log"
 "os"
 "github.com/joho/godotenv"
-"github.com/Mhmdulinnuha/uts1123150002/backend/config"
-"github.com/Mhmdulinnuha/uts1123150002/backend/routes"
+"github.com/Mhmdulinnuha/uts1123150002/config"
+"github.com/Mhmdulinnuha/uts1123150002/routes"
 )
 func main() {
 if err := godotenv.Load(); err != nil {log.Println("File .env tidak ditemukan, menggunakan environment variable sistem")

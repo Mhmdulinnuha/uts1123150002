@@ -1,8 +1,8 @@
 package repositories
 
 import (
-"github.com/Mhmdulinnuha/uts1123150002/backend/config"
-"github.com/Mhmdulinnuha/uts1123150002/backend/models"
+"github.com/Mhmdulinnuha/uts1123150002/config"
+"github.com/Mhmdulinnuha/uts1123150002/models"
 )
 type ProductRepository struct{}
 func NewProductRepository() *ProductRepository {
