@@ -6,6 +6,7 @@ import (
 )
 func SetupRouter() *gin.Engine {
 r := gin.Default()
+ r.Static("/assets", "../assets")
 r.Use(func(c *gin.Context) {
 c.Header("Access-Control-Allow-Origin", "*")
 c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")

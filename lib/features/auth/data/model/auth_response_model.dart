@@ -20,14 +20,14 @@ class UserModel {
 
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-        id: json['id'] as int,
-        firebaseUid: json['firebase_uid'] as String,
-        email: json['email'] as String,
-        name: json['name'] as String,
-        role: json['role'] as String,
-        emailVerified: json['email_verified'] as bool,
-        createdAt: json['created_at'] as String,
-      );
+id: (json['id'] as num?)?.toInt() ?? 0,
+firebaseUid: json['firebase_uid'] ?? '',
+email: json['email'] ?? '',
+name: json['name'] ?? '',
+role: json['role'] ?? '',
+emailVerified: json['email_verified'] == true || json['email_verified'] == 1,
+createdAt: json['created_at'] ?? '',
+);
 }
 
 
@@ -52,14 +52,15 @@ required this.user,
 
 
   factory AuthResponseModel.fromJson(Map<String, dynamic> json) {
-    final data = json['data'] as Map<String, dynamic>;
-    return AuthResponseModel(
-      success: json['success'] as bool,
-      message: json['message'] as String,
-      accessToken: data['access_token'] as String,
-      tokenType: data['token_type'] as String,
-      expiresIn: data['expires_in'] as int,
-      user: UserModel.fromJson(data['user'] as Map<String, dynamic>),
-    );
-  }
+  final data = json['data'] ?? {};
+
+  return AuthResponseModel(
+    success: json['success'] ?? false,
+    message: json['message'] ?? '',
+    accessToken: data['access_token'] ?? '',
+    tokenType: data['token_type'] ?? '',
+    expiresIn: (data['expires_in'] as num?)?.toInt() ?? 0,
+    user: UserModel.fromJson(data['user'] ?? {}),
+  );
+}
 }

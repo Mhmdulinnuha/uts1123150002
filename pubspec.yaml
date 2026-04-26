@@ -70,7 +70,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-     - assets/images/ball python.webp
+     - assets/images/ball_python.webp
      - assets/images/image.png
      - assets/images/image2.png
      - assets/icons/google_logo.png
