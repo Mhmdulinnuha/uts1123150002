@@ -31,27 +31,40 @@ class _DashboardPageState extends State<DashboardPage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const Text('Dashboard', style: TextStyle(fontSize: 18)),
-            Text(
-              'Halo, ${auth.firebaseUser?.displayName ?? 'User'}!',
-              style: const TextStyle(fontSize: 13, fontWeight: FontWeight.normal),
-            ),
-          ],
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () async {
-              await auth.logout();
-              if (!mounted) return;
-              Navigator.pushReplacementNamed(context, AppRouter.login);
-            },
-          ),
- ],
+  elevation: 0,
+  backgroundColor: Colors.white,
+  foregroundColor: Colors.black,
+  title: Row(
+    children: [
+      CircleAvatar(
+        backgroundColor: Colors.blue.shade100,
+        child: const Icon(Icons.person, color: Colors.blue),
       ),
+      const SizedBox(width: 10),
+      Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text('Dashboard', style: TextStyle(fontSize: 16)),
+          Text(
+            auth.firebaseUser?.displayName ?? 'User',
+            style: const TextStyle(fontSize: 12, color: Colors.grey),
+          ),
+        ],
+      ),
+    ],
+  ),
+  actions: [
+    IconButton(
+      icon: const Icon(Icons.logout),
+      onPressed: () async {
+        await auth.logout();
+        if (!mounted) return;
+        // ignore: use_build_context_synchronously
+        Navigator.pushReplacementNamed(context, AppRouter.login);
+      },
+    ),
+  ],
+),
 
 
       body: switch (product.status) {
@@ -102,7 +115,6 @@ class _DashboardPageState extends State<DashboardPage> {
   return InkWell(
     borderRadius: BorderRadius.circular(16),
     onTap: () {
-      // TODO: detail produk
     },
     child: Container(
       decoration: BoxDecoration(
@@ -110,6 +122,7 @@ class _DashboardPageState extends State<DashboardPage> {
         color: Colors.white,
         boxShadow: [
           BoxShadow(
+            // ignore: deprecated_member_use
             color: Colors.black.withOpacity(0.08),
             blurRadius: 10,
             offset: const Offset(0, 4),
@@ -139,6 +152,7 @@ class _DashboardPageState extends State<DashboardPage> {
                 child: Container(
                   padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                   decoration: BoxDecoration(
+                    // ignore: deprecated_member_use
                     color: Colors.black.withOpacity(0.6),
                     borderRadius: BorderRadius.circular(20),
                   ),
